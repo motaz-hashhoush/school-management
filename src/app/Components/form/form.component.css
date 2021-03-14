@@ -9,16 +9,7 @@
     background-color: rgba(174, 185, 196,0.9) ;
    
 }
-.column {
 
-    width: 25.33%;
-    padding: 15px;
-    margin: 13px;
-    border: 2px solid rgba(185, 180, 190, 0.918);
- 
-    border-radius: 10px ;
-  }
-  
 .from-control {
     width: 50%;
     padding: 15px;
