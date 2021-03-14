@@ -8,9 +8,17 @@
     border-radius: 10px ;
     background-color: rgba(174, 185, 196,0.9) ;
    
-   
 }
+.column {
 
+    width: 25.33%;
+    padding: 15px;
+    margin: 13px;
+    border: 2px solid rgba(185, 180, 190, 0.918);
+ 
+    border-radius: 10px ;
+  }
+  
 .from-control {
     width: 50%;
     padding: 15px;
@@ -40,4 +48,9 @@ input[type=text], input[type=number]{
 #submit:hover{
     background-color:rgba(19, 8, 82, 0.918);
     color: white;
+}
+#print,#update ,#delete{
+    background-color: rgba(19, 8, 82, 0.918);
+    color:white;
+    display: none;
 }

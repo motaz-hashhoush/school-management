@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
   students:Array<object>; 
-  
+
   constructor() { 
     this.students = []; 
   }
@@ -69,5 +69,19 @@ insertStudent(Name:any, Id:any, Gdpa:any,stuDate:any,dateTime:Date) {
   this.students.push(student);
   console.log("students array: ",  this.students);
 }
+ print() {
+  let output = "";
+  for (let i in  this.students) {
+    let student = [];
 
+    for (let Propertie in  this.students[i]) {
+      student.push(Propertie + ": " +  this.students[i][Propertie]);
+    }
+
+    output += "<li>" + student.join("<br>") + "</li> <br>";
+  }
+
+  document.getElementById("print").style.display = "block";
+  document.getElementById("print").innerHTML = "<ol>" + output + "</ol>";
+}
 }
