@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentServes, Student } from 'src/app/student.serves';
 
 @Component({
   selector: 'app-form',
@@ -6,16 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  students:Array<object>; 
-  //x = require()
 
-  constructor() { 
+  students:Student[];
+  constructor(private studentsserves:StudentServes) { 
     this.students = []; 
   }
 
   ngOnInit(): void {
+    this.getalldata();
+    console.log("hi");
   }
-
+  getalldata(){
+    this.studentsserves.getAllStudents()
+    .subscribe(x=> this.students = x);
+  }
   
  startClick(){
   
@@ -26,7 +31,7 @@ export class FormComponent implements OnInit {
   let dateTime = new Date();
 
    if(!this.inputValidation(nameInputEl,idInputEl,gdpaInputEl,stuInputDate)){
-       this.insertStudent(nameInputEl,idInputEl,gdpaInputEl,stuInputDate,dateTime);
+       this.insertStudent(nameInputEl,Number(idInputEl),Number(gdpaInputEl),new Date(stuInputDate),dateTime);
        alert("Studnet added!");
    }
   
@@ -59,15 +64,19 @@ export class FormComponent implements OnInit {
   return isEmpty;
 }
  
-insertStudent(Name:any, Id:any, Gdpa:any,stuDate:any,dateTime:Date) {
-  let student = {
+insertStudent(Name:string, Id:number, Gdpa:number,stuDate:Date,dateTime:Date) {
+  let student : Student;
+  student = {
     name: Name,
-    id: Id,
-    gdpa: Gdpa,
-    date: stuDate,
-    registration :dateTime
-  };
-  this.students.push(student);
+    id:Id,
+    gpa :Gdpa,
+    date : stuDate,
+    regester:new Date()
+  }
+  this.studentsserves.insertStudent(student)
+  .subscribe();
+  window.location.reload();
+  //this.students.push(student);
   console.log("students array: ",  this.students);
 }
  print() {
