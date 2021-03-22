@@ -7,20 +7,20 @@ export interface Student {
   id: number,
   gpa: number,
   date: Date,
-  regester:Date
+  regester: Date
 }
 
 @Injectable()
 export class StudentServes {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getAllStudents(): Observable<Student[]> {    
+  getAllStudents(): Observable<Student[]> {
     return this.http.get<Student[]>('http://localhost:3000/api/students/');
   }
 
 
-  insertStudent(std: Student){
-    return this.http.post('http://localhost:3000/api/students', std) 
+  insertStudent(std: Student) {
+    return this.http.post('http://localhost:3000/api/students', std)
   }
 
 

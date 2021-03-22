@@ -14,22 +14,24 @@ var corsOptions = {
 }
 app.use(cors(corsOptions))
 const port = 3000
-var students = [{    name: "mohamad",
-    id: 11924310,
-    gdpa: 4.5,
-    date: new Date("11/10/2001"),
-    registration :new Date()}]
+var students = [{
+  name: "mohamad",
+  id: 11924310,
+  gdpa: 4.5,
+  date: new Date("11/10/2001"),
+  registration: new Date()
+}]
 
 
 app.get('/api/students', (req, res) => {
-   console.log("hi motaz")
+  console.log("hi motaz")
   res.status(200).json(students)
 })
 const bodyparser = require("body-parser");
 app.use(bodyparser.json())
-app.post('/api/students',(req,res)=>{
-    console.log(req.body);
-    students.push(req.body);
+app.post('/api/students', (req, res) => {
+  console.log(req.body);
+  students.push(req.body);
 })
 
 app.listen(port, () => {
